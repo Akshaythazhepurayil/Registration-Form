@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Sign_img from './Sign_img';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+  const history = useNavigate();
 
   const [inpVal,setInpVal] = useState({
     name:'',   
@@ -30,7 +32,7 @@ const getData = (e)=>{
 const addData = (e)=>{
     e.preventDefault();
 
-    const getUserArr = localStorage.getItem('aks');
+    const getUserArr = localStorage.getItem('user-registration');
     console.log(getUserArr )
 
     const {name,password} = inpVal;
@@ -48,7 +50,9 @@ const addData = (e)=>{
           if(userLogin.length === 0){
             alert('invalid user')
           }else{
-            console.log('logged succes fully')
+            console.log('logged success fully')
+            localStorage.setItem('user-login',JSON.stringify(getUserArr))
+            history('/home')
           }
         }
     }
@@ -63,7 +67,7 @@ const addData = (e)=>{
             <Form>
               <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
                
-                <Form.Control type="text" onChange={getData} name = 'name' placeholder="Enter Name" />
+                <Form.Control type="text" onChange={getData} name = 'name' placeholder="Enter User Name" />
               
               </Form.Group>
                             
@@ -77,7 +81,7 @@ const addData = (e)=>{
                 Submit
                 </Button>
                 </Form>
-            <p className="mt-3">Did Not Have an Account <span><NavLink to='/'>Register Now</NavLink></span></p>
+            <p className="mt-3">Create Your Account <span><NavLink to='/'>Register Now</NavLink></span></p>
           </div>
 
             <Sign_img />

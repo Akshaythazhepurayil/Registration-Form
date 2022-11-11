@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Sign_img from "./Sign_img";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Registration = () => {
+
+  const history = useNavigate();
 
 const [inpVal,setInpVal] = useState({
     name:'',
@@ -45,7 +47,8 @@ const addData = (e)=>{
         alert('Enter at least 6 numbers ')
     }else{
         console.log('data added')
-        localStorage.setItem('aks',JSON.stringify([...data,inpVal]));
+        localStorage.setItem('user-registration',JSON.stringify([...data,inpVal]));
+        history('/login')
     }
 }
 
@@ -57,22 +60,22 @@ const addData = (e)=>{
             <h3 className="text-center col-lg-6 ">Register Now</h3>
             <Form>
               <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-                <Form.Control type="text" onChange={getData} name = 'name' placeholder="Enter Name" />
+                <Form.Control type="text" onChange={getData} name = 'name' placeholder="Name" />
               </Form.Group>
               
               <Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-                <Form.Control type="number" onChange={getData} name = 'phone' placeholder="Enter Phone" />
+                <Form.Control type="number" onChange={getData} name = 'phone' placeholder="Phone" />
               
               </Form.Group><Form.Group className="mb-3 col-lg-6" controlId="formBasicEmail">
-                <Form.Control type="email" onChange={getData} name = 'email' placeholder="Enter Email" />
+                <Form.Control type="email" onChange={getData} name = 'email' placeholder="Email" />
               </Form.Group>
 
               <Form.Group className="mb-3 col-lg-6" controlId="formBasicPassword">
                 <Form.Control type="password" onChange={getData} name = 'password' placeholder="Password" />
               </Form.Group>
 
-               <Button variant="primary" type="submit" onClick={addData} id="btn " className=" col-lg-6" style={{background:'rgb(67,185,127)'}} >
-               <span><NavLink to='/login'>Submit</NavLink></span>
+               <Button variant="primary" type="submit" onClick={addData}  className=" col-lg-6" style={{background:'rgb(67,185,127)'}} >
+               Submit
                 </Button>
             </Form>
             <p className="mt-3">Already Have an Account <span><NavLink to='/login'>Login</NavLink></span></p>
