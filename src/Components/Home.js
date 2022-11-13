@@ -64,7 +64,7 @@ const Home = () => {
                           <Modal.Header closeButton>
                               <Modal.Title>{loginData[0].name} </Modal.Title>
                           </Modal.Header>
-                          <Modal.Body>User Details</Modal.Body>
+                          <Modal.Body>{loginData[0].email}</Modal.Body>
                           <Modal.Footer>
                               <Button variant="secondary" onClick={handleClose}>
                                   Close
@@ -73,7 +73,7 @@ const Home = () => {
                                   Save Changes
                               </Button>
                           </Modal.Footer>
-                      </Modal>:""
+                      </Modal>:''
               }   
                    
                   </>

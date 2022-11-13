@@ -9,7 +9,7 @@ const User = () => {
         <div className="error d-flex flex-column justify-content-lg-center align-items-center">
           
           <h4>Welcome</h4>
-          <button className='btn btn-primary' onClick={() => history("/")}>Redirect Registration Page</button>
+          <button className='btn btn-primary' onClick={() => history("/")}>LogOut</button>
         </div>
 
       </div>

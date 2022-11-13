@@ -47,7 +47,7 @@ const addData = (e)=>{
         alert('Enter at least 6 numbers ')
     }else{
         console.log('data added')
-        localStorage.setItem('user-registration',JSON.stringify([...data,inpVal]));
+        localStorage.setItem('user-registration',JSON.stringify([...data,inpVal,]));
         history('/login')
     }
 }

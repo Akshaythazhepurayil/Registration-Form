@@ -49,12 +49,12 @@ const addData = (e)=>{
           });
           if(userLogin.length === 0){
             alert('invalid user')
-          }else if(userLogin.length === 'name'? history('/user'): ''){
+          }else if(userLogin.length === 'name'? history('/user'):"" ){
             
           
             }else{
             console.log('logged success fully')
-            localStorage.setItem('user-login',JSON.stringify(getUserArr))
+            localStorage.setItem('user-login',JSON.stringify(...data,getUserArr))
             history('/home')
           }
         }
